@@ -1,12 +1,12 @@
 import React from 'react'
-import { Header, Widget } from './components'
+import { Layout } from './components';
+import { Home } from './pages';
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <Widget />
-    </>
+    <Layout>
+      <Home />
+    </Layout>
   );
 }
 

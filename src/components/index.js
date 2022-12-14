@@ -1,6 +1,4 @@
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Widget from "./Widget";
+import Layout from "./Layout"
 
 
-export { Header, Sidebar, Widget}
+export { Layout }

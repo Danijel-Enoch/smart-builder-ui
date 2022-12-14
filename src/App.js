@@ -1,9 +1,13 @@
 import React from 'react'
+import { Header, Widget } from './components'
 
 const App = () => {
   return (
-    <div>App</div>
-  )
+    <>
+      <Header />
+      <Widget />
+    </>
+  );
 }
 
 export default App

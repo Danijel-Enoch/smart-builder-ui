@@ -1,12 +1,15 @@
 import React from 'react'
 import { Layout } from './components';
-import { Home } from './pages';
+import { BrowserRouter } from 'react-router-dom';
+import { Routes } from './config/routes';
 
 const App = () => {
   return (
-    <Layout>
-      <Home />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes />
+      </Layout>
+    </BrowserRouter>
   );
 }
 

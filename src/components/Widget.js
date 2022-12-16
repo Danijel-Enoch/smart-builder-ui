@@ -11,7 +11,7 @@ const Widget = () => {
       px="1.5rem"
       py="0.5rem"
     >
-      <Box display="flex" color="black" alignItems="center" justifyContent='space-evenly'>
+      <Box display="flex" color="black" alignItems="center" flexWrap='wrap' justifyContent='space-evenly'>
         <Box>Trending</Box>
 
           {Tokens.map((token) => (

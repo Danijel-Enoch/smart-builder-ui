@@ -31,8 +31,8 @@ const Sidebar = () => {
     >
       <List>
         {SidebarItem.map((item) => (
-        <NavLink to={item.path}>
-          <ListItem pl='2rem' pr='0.5rem' display="flex" alignItems="center" py='0.7rem' cursor='pointer'>
+        <NavLink key={item.id} to={item.path}>
+          <ListItem pl='2rem' pr='0.5rem' display="flex" alignItems="center" flexWrap='wrap' py='0.7rem' cursor='pointer'>
             <Image boxSize="18px" src={item.image} alt={item.name} />
             <Text ml='2rem'>{item.name}</Text>
             <Text ml='auto' as="small" color="brand.primary">

@@ -28,14 +28,11 @@ const DeflationaryToken = () => {
     if (token === 'standard-token') {
       navigate('/smarttoken');
     } else if (token === 'hyper-deflationary-token') {
-      //   navigate('/smarttoken/hyperdeflationary');
-      navigate('/hyperdeflationary');
+        navigate('/smarttoken/hyperdeflationary');
     } else if (token === 'mint-burn-token') {
-      //   navigate('/smarttoken/mintburn');
-      navigate('/mintburn');
+        navigate('/smarttoken/mintburn');
     } else {
-      //   navigate('/smarttoken/deflationary');
-      navigate('/deflationary');
+        navigate('/smarttoken/deflationary');
     }
   };
 

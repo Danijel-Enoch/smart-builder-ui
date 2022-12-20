@@ -32,14 +32,11 @@ const MintBurnToken = () => {
     if (token === 'standard-token') {
       navigate('/smarttoken');
     } else if (token === 'deflationary-token') {
-      // navigate('/smarttoken/deflationary');
-      navigate('/deflationary');
+      navigate('/smarttoken/deflationary');
     } else if (token === 'hyper-deflationary-token') {
-      // navigate('/smarttoken/hyperdeflationary');
-      navigate('/hyperdeflationary');
+      navigate('/smarttoken/hyperdeflationary');
     } else {
-      // navigate('/smarttoken/mintburn');
-      navigate('/mintburn');
+      navigate('/smarttoken/mintburn');
     }
   };
 

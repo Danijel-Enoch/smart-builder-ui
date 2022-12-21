@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -7,36 +7,31 @@ import {
   Select,
   Input,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const StandardToken = () => {
-
   const navigate = useNavigate();
 
-
   const [formData, setFormData] = useState({
-    tokenType: '',
-    tokenName: '',
-    symbol: '',
-    decimal: '',
-    totalSupply: '',
+    tokenType: "",
+    tokenName: "",
+    symbol: "",
+    decimal: "",
+    totalSupply: "",
   });
 
   const handleTokenType = (e) => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'deflationary-token') {
-      // navigate('/smarttoken/deflationary');
-      navigate('/deflationary');
-    } else if (token === 'hyper-deflationary-token') {
-      // navigate('/smarttoken/hyperdeflationary');
-      navigate('/hyperdeflationary');
-    } else if (token === 'mint-burn-token') {
-      // navigate('/smarttoken/mintburn');
-      navigate('/mintburn');
-    } else {
-      navigate('/smarttoken');
+    if (token === "deflationary-token") {
+      navigate("/smarttoken/deflationary");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
+    } else if (token === "mint-burn-token") {
+      navigate("/smarttoken/mintburn");
+    } else if (token === "standard-token") {
+      navigate("/smarttoken/standardToken");
     }
   };
 
@@ -56,7 +51,7 @@ const StandardToken = () => {
       borderColor="rgba(0, 0, 0, 0.3)"
     >
       <form onSubmit={handleSubmit}>
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Token Type</FormLabel>
           <Select defaultValue="standard-token" onChange={handleTokenType}>
             <option value="standard-token">Standard Token</option>
@@ -68,7 +63,7 @@ const StandardToken = () => {
           </Select>
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Token Name</FormLabel>
           <Input
             type="text"
@@ -79,7 +74,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Symbol</FormLabel>
           <Input
             type="text"
@@ -90,7 +85,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Decimal</FormLabel>
           <Input
             type="text"
@@ -101,7 +96,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Total Supply</FormLabel>
           <Input
             type="text"
@@ -121,9 +116,9 @@ const StandardToken = () => {
             mr="3rem"
             borderRadius="15px"
             _hover={{
-              bg: 'brand.primary',
-              opacity: '0.8',
-              color: 'black',
+              bg: "brand.primary",
+              opacity: "0.8",
+              color: "black",
             }}
           >
             Create Token

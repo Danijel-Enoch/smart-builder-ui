@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -7,35 +7,34 @@ import {
   Select,
   Input,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const DeflationaryToken = () => {
+  document.title = "Smart Token - Deflationary Token";
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: '',
-    tokenName: '',
-    symbol: '',
-    decimal: '',
-    totalSupply: '',
-    deflation: '',
+    tokenType: "",
+    tokenName: "",
+    symbol: "",
+    decimal: "",
+    totalSupply: "",
+    deflation: "",
   });
 
   const handleTokenType = (e) => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'hyper-deflationary-token') {
-      //   navigate('/smarttoken/hyperdeflationary');
-      navigate('/hyperdeflationary');
-    } else if (token === 'mint-burn-token') {
-      //   navigate('/smarttoken/mintburn');
-      navigate('/mintburn');
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/hyperdeflationary");
+    } else if (token === "mint-burn-token") {
+      navigate("/mintburn");
     } else {
-      //   navigate('/smarttoken/deflationary');
-      navigate('/deflationary');
+      navigate("/deflationary");
     }
   };
 
@@ -131,9 +130,9 @@ const DeflationaryToken = () => {
             mr="3rem"
             borderRadius="15px"
             _hover={{
-              bg: 'brand.primary',
-              opacity: '0.8',
-              color: 'black',
+              bg: "brand.primary",
+              opacity: "0.8",
+              color: "black",
             }}
           >
             Create Token

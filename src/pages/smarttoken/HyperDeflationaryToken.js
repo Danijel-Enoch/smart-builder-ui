@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -7,38 +7,40 @@ import {
   Select,
   Input,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const HyperDeflationaryToken = () => {
+  document.title = "Smart Token - HyperDeflationary Token";
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: '',
-    tokenName: '',
-    symbol: '',
-    decimal: '',
-    totalSupply: '',
-    marketingWallet: '',
-    buyBack: '',
-    holdersReward: '',
-    tax: '',
+    tokenType: "",
+    tokenName: "",
+    symbol: "",
+    decimal: "",
+    totalSupply: "",
+    marketingWallet: "",
+    buyBack: "",
+    holdersReward: "",
+    tax: "",
   });
 
   const handleTokenType = (e) => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'deflationary-token') {
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "deflationary-token") {
       // navigate('/smarttoken/deflationary');
-      navigate('/deflationary');
-    } else if (token === 'mint-burn-token') {
+      navigate("/deflationary");
+    } else if (token === "mint-burn-token") {
       // navigate('/smarttoken/mintburn');
-      navigate('/mintburn');
+      navigate("/mintburn");
     } else {
       // navigate('/smarttoken/hyperdeflationary');
-      navigate('/hyperdeflationary');
+      navigate("/hyperdeflationary");
     }
   };
 
@@ -168,9 +170,9 @@ const HyperDeflationaryToken = () => {
             mr="3rem"
             borderRadius="15px"
             _hover={{
-              bg: 'brand.primary',
-              opacity: '0.8',
-              color: 'black',
+              bg: "brand.primary",
+              opacity: "0.8",
+              color: "black",
             }}
           >
             Create Token

@@ -24,14 +24,14 @@ const StandardToken = () => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === "deflationary-token") {
-      navigate("/smarttoken/deflationary");
-    } else if (token === "hyper-deflationary-token") {
-      navigate("/smarttoken/hyperdeflationary");
-    } else if (token === "mint-burn-token") {
-      navigate("/smarttoken/mintburn");
-    } else if (token === "standard-token") {
-      navigate("/smarttoken/standardToken");
+    if (token === 'deflationary-token') {
+      navigate('/smarttoken/deflationary');
+    } else if (token === 'hyper-deflationary-token') {
+      navigate('/smarttoken/hyperdeflationary');
+    } else if (token === 'mint-burn-token') {
+      navigate('/smarttoken/mintburn');
+    } else {
+      navigate('/smarttoken');
     }
   };
 

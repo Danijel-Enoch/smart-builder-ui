@@ -13,7 +13,7 @@ const HyperDeflationaryToken = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: '',
+    tokenType: 'hyper-deflationary-token',
     tokenName: '',
     symbol: '',
     decimal: '',

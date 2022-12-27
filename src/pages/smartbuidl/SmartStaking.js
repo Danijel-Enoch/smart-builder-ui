@@ -8,6 +8,7 @@ import { colors } from "../../styled/UniversalStyle";
 import { RadioGroup, RadioButton } from "react-radio-buttons";
 import { templates } from "../../constants/data";
 const SmartStaking = () => {
+  // Dropdown
   const network = {
     name: "network",
   };
@@ -23,13 +24,19 @@ const SmartStaking = () => {
     },
   ];
 
-  const steps = [1, 2, 3, 4];
+  // Logic
 
+  const steps = [1, 2, 3, 4];
   const [values, setValues] = useState({});
   const [pageStep, setPageStep] = useState(1);
+  const [platform, setPlatform] = useState("");
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const platformChange = (e) => {
+    setPlatform(e.target.value);
   };
 
   const handleNetwork = (selectedOption) => {
@@ -179,7 +186,28 @@ const SmartStaking = () => {
                 onChange={(e) => handleChange(e)}
                 focusBorderColor={colors.gray100}
               />
-              <Box textAlign="center" mt={"25%"}>
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                padding={10}
+                gap={5}
+              >
+                <Button
+                  type="button"
+                  bg="brand.primary"
+                  color="white"
+                  w={"20%"}
+                  fontSize={18}
+                  borderRadius="15px"
+                  _hover={{
+                    bg: "brand.primary",
+                    opacity: "0.8",
+                    color: "black",
+                  }}
+                  onClick={() => setPageStep(pageStep - 1)}
+                >
+                  Back
+                </Button>
                 <Button
                   type="submit"
                   bg="brand.primary"
@@ -201,32 +229,74 @@ const SmartStaking = () => {
         )}
         {pageStep === 3 && (
           <>
-            <RadioGroup
-              style={{
-                width: "100%",
-                marginTop: "20px",
-              }}
-            >
-              {templates.map((template) => {
-                const { id, name, text } = template;
-                return (
-                  <RadioButton
-                    value={name}
-                    iconSize={20}
-                    iconInnerSize={10}
-                    pointColor={colors.primary}
-                    key={id}
-                  >
-                    <Text fontSize={18} fontWeight={"600"} color={"black"}>
-                      {name}
-                    </Text>
-                    <Text fontSize={14} color={"black"}>
-                      {text}
-                    </Text>
-                  </RadioButton>
-                );
-              })}
-            </RadioGroup>
+            <SmartStakingForm onSubmit={(e) => handleSubmit(e, 4)}>
+              <RadioGroup
+                style={{
+                  width: "100%",
+                  marginTop: "20px",
+                }}
+                onChange={platformChange}
+              >
+                {templates.map((template) => {
+                  const { id, name, text } = template;
+                  return (
+                    <RadioButton
+                      value={name}
+                      iconSize={20}
+                      iconInnerSize={10}
+                      pointColor={colors.primary}
+                      key={id}
+                    >
+                      <Text fontSize={18} fontWeight={"600"} color={"black"}>
+                        {name}
+                      </Text>
+                      <Text fontSize={14} color={"black"}>
+                        {text}
+                      </Text>
+                    </RadioButton>
+                  );
+                })}
+              </RadioGroup>
+
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                padding={5}
+                gap={5}
+              >
+                <Button
+                  type="button"
+                  bg="brand.primary"
+                  color="white"
+                  w={"20%"}
+                  fontSize={18}
+                  borderRadius="15px"
+                  _hover={{
+                    bg: "brand.primary",
+                    opacity: "0.8",
+                    color: "black",
+                  }}
+                  onClick={() => setPageStep(pageStep - 1)}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  bg="brand.primary"
+                  color="white"
+                  w={"20%"}
+                  fontSize={18}
+                  borderRadius="15px"
+                  _hover={{
+                    bg: "brand.primary",
+                    opacity: "0.8",
+                    color: "black",
+                  }}
+                >
+                  Next
+                </Button>
+              </Box>
+            </SmartStakingForm>
           </>
         )}
         {pageStep === 4 && <Text>step 4</Text>}

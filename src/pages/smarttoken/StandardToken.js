@@ -24,14 +24,14 @@ const StandardToken = () => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'deflationary-token') {
-      navigate('/smarttoken/deflationary');
-    } else if (token === 'hyper-deflationary-token') {
-      navigate('/smarttoken/hyperdeflationary');
-    } else if (token === 'mint-burn-token') {
-      navigate('/smarttoken/mintburn');
+    if (token === "deflationary-token") {
+      navigate("/smarttoken/deflationary");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
+    } else if (token === "mint-burn-token") {
+      navigate("/smarttoken/mintburn");
     } else {
-      navigate('/smarttoken');
+      navigate("/smarttoken");
     }
   };
 
@@ -39,6 +39,8 @@ const StandardToken = () => {
     e.preventDefault();
     console.log(formData);
   };
+
+  console.log(formData);
 
   return (
     <Box
@@ -53,7 +55,10 @@ const StandardToken = () => {
       <form onSubmit={handleSubmit}>
         <FormControl my="1.5rem">
           <FormLabel>Token Type</FormLabel>
-          <Select defaultValue="standard-token" onChange={handleTokenType}>
+          <Select
+            defaultValue="standard-token"
+            onChange={(e) => handleTokenType(e)}
+          >
             <option value="standard-token">Standard Token</option>
             <option value="deflationary-token">Deflationary Token</option>
             <option value="hyper-deflationary-token">

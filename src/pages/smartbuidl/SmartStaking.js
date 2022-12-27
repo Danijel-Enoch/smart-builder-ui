@@ -5,8 +5,9 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { SmartStakingForm } from "../../styled/SmartStaking";
 import { colors } from "../../styled/UniversalStyle";
-import { RadioGroup, RadioButton } from "react-radio-buttons";
+// import { RadioGroup, RadioButton } from "react-radio-buttons";
 import { templates } from "../../constants/data";
+import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
 const SmartStaking = () => {
   // Dropdown
   const network = {
@@ -33,10 +34,6 @@ const SmartStaking = () => {
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const platformChange = (e) => {
-    setPlatform(e.target.value);
   };
 
   const handleNetwork = (selectedOption) => {
@@ -230,34 +227,47 @@ const SmartStaking = () => {
         {pageStep === 3 && (
           <>
             <SmartStakingForm onSubmit={(e) => handleSubmit(e, 4)}>
-              <RadioGroup
-                style={{
-                  width: "100%",
-                  marginTop: "20px",
-                }}
-                onChange={platformChange}
-              >
-                {templates.map((template) => {
-                  const { id, name, text } = template;
-                  return (
-                    <RadioButton
-                      value={name}
-                      iconSize={20}
-                      iconInnerSize={10}
-                      pointColor={colors.primary}
-                      key={id}
-                    >
-                      <Text fontSize={18} fontWeight={"600"} color={"black"}>
-                        {name}
-                      </Text>
-                      <Text fontSize={14} color={"black"}>
-                        {text}
-                      </Text>
-                    </RadioButton>
-                  );
-                })}
+              <RadioGroup onChange={setPlatform} value={platform}>
+                <Stack direction="column">
+                  {templates.map((template) => {
+                    const { id, name, text } = template;
+                    return (
+                      <Box
+                        display={"flex"}
+                        flexDirection={"row"}
+                        width={"100%"}
+                        border={
+                          platform === name
+                            ? "1px solid #FC8B23"
+                            : "1px solid #eee"
+                        }
+                        borderRadius={5}
+                        padding={3}
+                        key={id}
+                      >
+                        <Box>
+                          <Text
+                            fontSize={16}
+                            fontWeight={"550"}
+                            color={"black"}
+                            mb={2}
+                          >
+                            {name}
+                          </Text>
+                          <Text>{text}</Text>
+                        </Box>
+                        <Radio
+                          value={name}
+                          position={"absolute"}
+                          right={5}
+                          size={"lg"}
+                          colorScheme={"orange"}
+                        />
+                      </Box>
+                    );
+                  })}
+                </Stack>
               </RadioGroup>
-
               <Box
                 display={"flex"}
                 justifyContent={"center"}
@@ -299,7 +309,107 @@ const SmartStaking = () => {
             </SmartStakingForm>
           </>
         )}
-        {pageStep === 4 && <Text>step 4</Text>}
+        {pageStep === 4 && (
+          <>
+            <SmartStakingForm onSubmit={(e) => handleSubmit(e)}>
+              <Text textAlign={"center"} fontWeight={"600"} mb={3}>
+                FRONT-END DESIGN
+              </Text>
+              <Text fontSize={16} fontWeight={"600"} mb={1}>
+                Name
+              </Text>
+              <Input
+                name="frontEndName"
+                type={"text"}
+                onChange={(e) => handleChange(e)}
+                focusBorderColor={colors.gray100}
+                mb={3}
+              />
+              <Text fontSize={16} fontWeight={"600"} mb={1}>
+                Color Code
+              </Text>
+              <Input
+                name="colorCode"
+                type={"text"}
+                onChange={(e) => handleChange(e)}
+                focusBorderColor={colors.gray100}
+                mb={3}
+              />
+              <Text fontSize={16} fontWeight={"600"} mb={1}>
+                Upload Logo
+              </Text>
+              <Input
+                name="logo"
+                type={"text"}
+                onChange={(e) => handleChange(e)}
+                focusBorderColor={colors.gray100}
+                mb={10}
+              />
+              <Text textAlign={"center"} fontWeight={"600"} mb={3}>
+                BACK-END DESIGN
+              </Text>
+              <Text fontSize={16} fontWeight={"600"} mb={1}>
+                Functionality
+              </Text>
+              <Input
+                name="functionality"
+                type={"text"}
+                onChange={(e) => handleChange(e)}
+                focusBorderColor={colors.gray100}
+                mb={3}
+              />
+              <Text fontSize={16} fontWeight={"600"} mb={1}>
+                Data Query
+              </Text>
+              <Input
+                name="dataQuery"
+                type={"text"}
+                onChange={(e) => handleChange(e)}
+                focusBorderColor={colors.gray100}
+                mb={3}
+              />
+
+              <Box
+                display={"flex"}
+                justifyContent={"center"}
+                padding={5}
+                gap={5}
+              >
+                <Button
+                  type="button"
+                  bg="brand.primary"
+                  color="white"
+                  w={"20%"}
+                  fontSize={18}
+                  borderRadius="15px"
+                  _hover={{
+                    bg: "brand.primary",
+                    opacity: "0.8",
+                    color: "black",
+                  }}
+                  onClick={() => setPageStep(pageStep - 1)}
+                >
+                  Back
+                </Button>
+                <Button
+                  type="submit"
+                  bg="brand.primary"
+                  color="white"
+                  w={"20%"}
+                  fontSize={18}
+                  borderRadius="15px"
+                  _hover={{
+                    bg: "brand.primary",
+                    opacity: "0.8",
+                    color: "black",
+                  }}
+                >
+                  Deploy
+                </Button>
+              </Box>
+            </SmartStakingForm>
+          </>
+        )}
       </Box>
     </>
   );

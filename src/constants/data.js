@@ -165,7 +165,7 @@ const templates = [
   },
   {
     id: 3,
-    name: "Yielding platform",
+    name: "Biding platform",
     text: "A module template used to create a singular yield farming dApps",
   },
   {

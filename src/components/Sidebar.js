@@ -23,11 +23,15 @@ const Sidebar = () => {
   return (
     <Box
       w="25%"
-      minHeight="100vh"
+      position='fixed'
+      h='100%'
+      overflowY='auto'
       bg="white"
+      top='26.6%'
       borderRight="1px"
       borderColor="rgba(0, 0, 0, 0.1);"
       pt='1rem'
+      zIndex={2}
     >
       <List>
         {SidebarItem.map((item) => (
@@ -43,7 +47,7 @@ const Sidebar = () => {
         ))}
       </List>
 
-      <Box display='flex' mt="2rem">
+      <Box display='flex' mt="2rem" mb='2rem'>
         <Image boxSize="20px" src={sun} alt="sun" />
         <Switch colorScheme="red" />
       </Box>

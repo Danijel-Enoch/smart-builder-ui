@@ -10,9 +10,7 @@ import {
 } from '@chakra-ui/react';
 
 const StandardToken = () => {
-
   const navigate = useNavigate();
-
 
   const [formData, setFormData] = useState({
     tokenType: 'standard-token',
@@ -53,7 +51,7 @@ const StandardToken = () => {
       borderColor="rgba(0, 0, 0, 0.3)"
     >
       <form onSubmit={handleSubmit}>
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Token Type</FormLabel>
           <Select defaultValue="standard-token" onChange={handleTokenType}>
             <option value="standard-token">Standard Token</option>
@@ -65,7 +63,7 @@ const StandardToken = () => {
           </Select>
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Token Name</FormLabel>
           <Input
             type="text"
@@ -76,7 +74,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Symbol</FormLabel>
           <Input
             type="text"
@@ -87,7 +85,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Decimal</FormLabel>
           <Input
             type="text"
@@ -98,7 +96,7 @@ const StandardToken = () => {
           />
         </FormControl>
 
-        <FormControl my='1.5rem'>
+        <FormControl my="1.5rem">
           <FormLabel>Total Supply</FormLabel>
           <Input
             type="text"

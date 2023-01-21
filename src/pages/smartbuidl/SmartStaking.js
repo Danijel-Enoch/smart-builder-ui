@@ -1,5 +1,5 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,12 +8,17 @@ import { colors } from "../../styled/UniversalStyle";
 // import { RadioGroup, RadioButton } from "react-radio-buttons";
 import { templates } from "../../constants/data";
 import { Radio, RadioGroup, Stack } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 const SmartStaking = () => {
-  // Dropdown
   const network = {
     name: "network",
   };
 
+  const platformName = {
+    name: "platform",
+  };
+
+  // Dropdown
   const networks = [
     {
       id: 1,
@@ -32,16 +37,37 @@ const SmartStaking = () => {
   const [pageStep, setPageStep] = useState(1);
   const [platform, setPlatform] = useState("");
 
+  const navigate = useNavigate();
+
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const handleNetwork = (selectedOption) => {
-    setValues({ ...values, [network.name]: selectedOption });
+    setValues({ ...values, [network.name]: selectedOption.name });
+  };
+  const handlePlatform = () => {
+    setValues({ ...values, [platformName.name]: platform });
   };
 
+  useEffect(() => {
+    handlePlatform();
+    // eslint-disable-next-line
+  }, [platform]);
+
+  console.log(values);
+
   const handleValidation = () => {
-    const { dAppName, network, chainId } = values;
+    const {
+      dAppName,
+      network,
+      chainId,
+      platform,
+      dataQuery,
+      frontEndName,
+      functionality,
+      logo,
+    } = values;
 
     if (pageStep === 1) {
       if (!dAppName || dAppName === "") {
@@ -70,6 +96,47 @@ const SmartStaking = () => {
       } else {
         return true;
       }
+    }
+    if (pageStep === 3 && !platform) {
+      toast.error("Select one of the options.");
+      return false;
+    }
+    if (pageStep === 4) {
+      if (!frontEndName && !dataQuery && !functionality && !logo) {
+        toast.error("Please fill all fields");
+        return false;
+      }
+
+      if (!frontEndName || frontEndName === "") {
+        toast.error("Front-End name cannot be empty!");
+        return false;
+      }
+      if (frontEndName.length < 4) {
+        toast.error("Front-End name is too short!");
+        return false;
+      }
+      if (!dataQuery || dataQuery === "") {
+        toast.error("Data Query name cannot be empty!");
+        return false;
+      }
+      if (dataQuery.length < 4) {
+        toast.error("Data Query name is too short!");
+        return false;
+      }
+      if (!functionality || functionality === "") {
+        toast.error("Functionality description cannot be empty!");
+        return false;
+      }
+      if (functionality.length < 4) {
+        toast.error("Functionality description is too short!");
+        return false;
+      }
+      if (!logo) {
+        toast.error("No logo set!");
+        return false;
+      } else {
+        return true;
+      }
     } else {
       return true;
     }
@@ -78,10 +145,13 @@ const SmartStaking = () => {
   const handleSubmit = (e, step) => {
     e.preventDefault();
     if (handleValidation()) {
-      console.log("true");
       setPageStep(step);
-    } else {
-      console.log("false");
+    }
+    if (handleValidation() && step === 0) {
+      toast.success("Your token has been deployed successfully!");
+      setTimeout(() => {
+        navigate("/smartbuidl");
+      }, 1500);
     }
   };
 
@@ -106,7 +176,7 @@ const SmartStaking = () => {
           <Box
             position={"absolute"}
             background="black"
-            w={"30%"}
+            w={"25%"}
             h={0.5}
             zIndex={1}
             top={"45%"}
@@ -311,7 +381,7 @@ const SmartStaking = () => {
         )}
         {pageStep === 4 && (
           <>
-            <SmartStakingForm onSubmit={(e) => handleSubmit(e)}>
+            <SmartStakingForm onSubmit={(e) => handleSubmit(e, 0)}>
               <Text textAlign={"center"} fontWeight={"600"} mb={3}>
                 FRONT-END DESIGN
               </Text>

@@ -31,20 +31,20 @@ const MintBurnToken = () => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'deflationary-token') {
-      navigate('/smarttoken/deflationary');
-    } else if (token === 'hyper-deflationary-token') {
-      navigate('/smarttoken/hyperdeflationary');
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "deflationary-token") {
+      navigate("/smarttoken/deflationary");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
     } else {
-      navigate('/smarttoken/mintburn');
+      navigate("/smarttoken/mintburn");
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (

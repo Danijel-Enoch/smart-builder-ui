@@ -9,9 +9,18 @@ const Layout = (props) => {
     <>
       <Header />
       <Widget />
-      <Box display="flex">
+      <Box position="relative" display="flex">
         <Sidebar />
-        <Box w="80%">{props.children}</Box>
+        <Box
+          ml="25%"
+          w="100%"
+          transition="all 200ms ease-in-out"
+          py="4rem"
+          mt="7.5rem"
+          px="2rem"
+        >
+          {props.children}
+        </Box>
       </Box>
     </>
   );

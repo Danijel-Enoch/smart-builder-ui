@@ -15,7 +15,7 @@ const DeflationaryToken = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: "",
+    tokenType: "deflationary-token",
     tokenName: "",
     symbol: "",
     decimal: "",
@@ -25,16 +25,17 @@ const DeflationaryToken = () => {
 
   const handleTokenType = (e) => {
     const token = e.target.value;
+
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'hyper-deflationary-token') {
-        navigate('/smarttoken/hyperdeflationary');
-    } else if (token === 'mint-burn-token') {
-        navigate('/smarttoken/mintburn');
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
+    } else if (token === "mint-burn-token") {
+      navigate("/smarttoken/mintburn");
     } else {
-        navigate('/smarttoken/deflationary');
+      navigate("/smarttoken/deflationary");
     }
   };
 

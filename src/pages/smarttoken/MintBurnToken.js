@@ -18,7 +18,7 @@ const MintBurnToken = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: "",
+    tokenType: "mint-burn-token",
     tokenName: "",
     symbol: "",
     decimal: "",

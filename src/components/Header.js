@@ -7,10 +7,17 @@ import nearIcon from '../assets/near-icon.png';
 const Header = () => {
   return (
     <Box
+      as="header"
+      w="100%"
+      position="fixed"
       display="flex"
       justifyContent="space-between"
       alignItems="center"
+      h='20%'
       p="1.5rem"
+      bg="white"
+      top="0"
+      zIndex={2}
     >
       <Box display="flex" alignItems="center">
         <Image boxSize="40px" src={logo} alt="logo" />

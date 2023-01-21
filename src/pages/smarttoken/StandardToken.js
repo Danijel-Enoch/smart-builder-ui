@@ -13,7 +13,7 @@ const StandardToken = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: "",
+    tokenType: "standard-token",
     tokenName: "",
     symbol: "",
     decimal: "",

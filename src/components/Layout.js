@@ -1,8 +1,8 @@
-import React from 'react';
-import { Box } from '@chakra-ui/react';
-import Header from './Header';
-import Widget from './Widget';
-import Sidebar from './Sidebar';
+import React from "react";
+import { Box } from "@chakra-ui/react";
+import Header from "./Header";
+import Widget from "./Widget";
+import Sidebar from "./Sidebar";
 
 const Layout = (props) => {
   return (

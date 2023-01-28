@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -7,18 +7,20 @@ import {
   Select,
   Input,
   Button,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const DeflationaryToken = () => {
+  document.title = "Smart Token - Deflationary Token";
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: 'deflationary-token',
-    tokenName: '',
-    symbol: '',
-    decimal: '',
-    totalSupply: '',
-    deflation: '',
+    tokenType: "deflationary-token",
+    tokenName: "",
+    symbol: "",
+    decimal: "",
+    totalSupply: "",
+    deflation: "",
   });
 
   const handleTokenType = (e) => {
@@ -26,14 +28,14 @@ const DeflationaryToken = () => {
 
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'hyper-deflationary-token') {
-      navigate('/smarttoken/hyperdeflationary');
-    } else if (token === 'mint-burn-token') {
-      navigate('/smarttoken/mintburn');
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
+    } else if (token === "mint-burn-token") {
+      navigate("/smarttoken/mintburn");
     } else {
-      navigate('/smarttoken/deflationary');
+      navigate("/smarttoken/deflationary");
     }
   };
 
@@ -55,9 +57,7 @@ const DeflationaryToken = () => {
       <form onSubmit={handleSubmit}>
         <FormControl my="1.5rem">
           <FormLabel>Token Type</FormLabel>
-          <Select defaultValue="deflationary-token" 
-          onChange={handleTokenType}
-          >
+          <Select defaultValue="deflationary-token" onChange={handleTokenType}>
             <option value="standard-token">Standard Token</option>
             <option value="deflationary-token">Deflationary Token</option>
             <option value="hyper-deflationary-token">
@@ -131,9 +131,9 @@ const DeflationaryToken = () => {
             mr="3rem"
             borderRadius="15px"
             _hover={{
-              bg: 'brand.primary',
-              opacity: '0.8',
-              color: 'black',
+              bg: "brand.primary",
+              opacity: "0.8",
+              color: "black",
             }}
           >
             Create Token

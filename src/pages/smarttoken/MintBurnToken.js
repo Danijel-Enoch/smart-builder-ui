@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   FormControl,
@@ -9,40 +9,42 @@ import {
   Button,
   Text,
   Image,
-} from '@chakra-ui/react';
-import arrow from '../../assets/right-arrow.png';
+} from "@chakra-ui/react";
+import arrow from "../../assets/right-arrow.png";
 
 const MintBurnToken = () => {
+  document.title = "Smart Token - Mint Burn Token";
+
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    tokenType: 'mint-burn-token',
-    tokenName: '',
-    symbol: '',
-    decimal: '',
-    initialSupply: '',
-    initialBurn: '',
-    totalSupply: '',
+    tokenType: "mint-burn-token",
+    tokenName: "",
+    symbol: "",
+    decimal: "",
+    initialSupply: "",
+    initialBurn: "",
+    totalSupply: "",
   });
 
   const handleTokenType = (e) => {
     const token = e.target.value;
     setFormData({ ...formData, tokenType: token });
 
-    if (token === 'standard-token') {
-      navigate('/smarttoken');
-    } else if (token === 'deflationary-token') {
-      navigate('/smarttoken/deflationary');
-    } else if (token === 'hyper-deflationary-token') {
-      navigate('/smarttoken/hyperdeflationary');
+    if (token === "standard-token") {
+      navigate("/smarttoken");
+    } else if (token === "deflationary-token") {
+      navigate("/smarttoken/deflationary");
+    } else if (token === "hyper-deflationary-token") {
+      navigate("/smarttoken/hyperdeflationary");
     } else {
-      navigate('/smarttoken/mintburn');
+      navigate("/smarttoken/mintburn");
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData);
   };
 
   return (
@@ -143,9 +145,9 @@ const MintBurnToken = () => {
             mr="3rem"
             borderRadius="15px"
             _hover={{
-              bg: 'brand.primary',
-              opacity: '0.8',
-              color: 'black',
+              bg: "brand.primary",
+              opacity: "0.8",
+              color: "black",
             }}
           >
             Create Token
@@ -156,8 +158,8 @@ const MintBurnToken = () => {
           <Text display="flex" alignItems="center" justifyContent="center">
             <Text as="span" mr="1rem">
               Admin edits
-            </Text>{' '}
-            <Image boxSize="20px" src={arrow} alt="arrow" />{' '}
+            </Text>{" "}
+            <Image boxSize="20px" src={arrow} alt="arrow" />{" "}
           </Text>
         </Box>
       </form>

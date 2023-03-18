@@ -4,48 +4,52 @@ import { Box, Button, Image } from '@chakra-ui/react';
 import logo from '../assets/Smart Builders Logo.png';
 import brandName from '../assets/Smart Builders Logo text.png';
 import nearIcon from '../assets/near-icon.png';
-import connectors from '../utils/connectors'
+// import connectors from '../utils/connectors'
 
 
 const Header = () => {
-  const connector = connectors["UAuth"][0];
+  // const connector = connectors["UAuth"][0];
 
-  const { useIsActivating, useIsActive } = connectors['UAuth'][1];
-  const isActivating = useIsActivating();
-  const isActive = useIsActive();
+  // const { useIsActivating, useIsActive } = connectors['UAuth'][1];
+  // const isActivating = useIsActivating();
+  const isActive = false;
 
   const [connectionStatus, setConnectionStatus] = useState('Disconnected');
   const [error, setError] = useState();
 
   // Handle connector activation and update connection/error state
-  const handleToggleConnect = () => {
-    setError(undefined); // Clear error state
+  // const handleToggleConnect = () => {
+  //   setError(undefined); // Clear error state
 
-    if (isActive) {
-      if (connector?.deactivate) {
-        void connector.deactivate();
-      } else {
-        void connector.resetState();
-      }
-      setConnectionStatus('Disconnected');
-    } else if (!isActivating) {
-      setConnectionStatus('Connecting...');
+  //   if (isActive) {
+  //     if (connector?.deactivate) {
+  //       void connector.deactivate();
+  //     } else {
+  //       void connector.resetState();
+  //     }
+  //     setConnectionStatus('Disconnected');
+  //   } else if (!isActivating) {
+  //     setConnectionStatus('Connecting...');
 
-      // Activate the connector and update states
-      connector
-        .activate(1)
-        // .user()
-        .then((user) => {
-          setConnectionStatus('Connected');
-          localStorage.setItem('currentUser:', user)
-          console.log(user);
-        })
-        .catch((e) => {
-          connector.resetState();
-          setError(e);
-        });
-    }
-  };
+  //     // Activate the connector and update states
+  //     connector
+  //       .activate(1)
+  //       // .user()
+  //       .then((user) => {
+  //         setConnectionStatus('Connected');
+  //         localStorage.setItem('currentUser:', user)
+  //         console.log(user);
+  //       })
+  //       .catch((e) => {
+  //         connector.resetState();
+  //         setError(e);
+  //       });
+  //   }
+  // };
+
+  const handleArchwayConnect = () => {
+
+  }
 
   return (
     <Box
@@ -79,6 +83,7 @@ const Header = () => {
             opacity: '0.8',
             color: 'black',
           }}
+          onClick={handleArchwayConnect}
         >
           Connect Wallet
         </Button>
@@ -94,7 +99,7 @@ const Header = () => {
             opacity: '0.8',
             color: 'black',
           }}
-          onClick={handleToggleConnect}
+
         >
           {isActive ? 'Logout' : 'Login with Unstoppable'}
         </Button>

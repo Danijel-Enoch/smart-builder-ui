@@ -36,6 +36,7 @@ const Header = () => {
   const handleToggleConnect = async () => {
     if (udUser)
       await uDauth.logout()
+    window.location.reload()
     else
       try {
         const authorization = await uDauth.loginWithPopup()

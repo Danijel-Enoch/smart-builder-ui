@@ -15,8 +15,10 @@ const Header = () => {
 
   let isActive = false;
   const [udUser, setUdUser] = useState(null)
-
-
+  const [accounts, setaccounts] = useState()
+  const [CosmWasmClient, setCosmWasmClient] = useState()
+  const [queryHandler, setqueryHandler] = useState()
+  const [gasPrice, setgasPrice] = useState()
 
   const uauth = new UAuth({
     clientID: "d33e635d-7c71-4e48-9376-5756cd2a018b",
@@ -58,8 +60,6 @@ const Header = () => {
     chainId: 'constantine-1', chainName: 'Constantine Testnet', rpc: 'https://rpc.constantine-1.archway.tech', rest: 'https://api.constantine-1.archway.tech', stakeCurrency: { coinDenom: 'CONST', coinMinimalDenom: 'uconst', coinDecimals: 6 }, bip44: { coinType: 118 }, bech32Config: { bech32PrefixAccAddr: 'archway', bech32PrefixAccPub: 'archwaypub', bech32PrefixValAddr: 'archwayvaloper', bech32PrefixValPub: 'archwayvaloperpub', bech32PrefixConsAddr: 'archwayvalcons', bech32PrefixConsPub: 'archwayvalconspub', }, currencies: [{ coinDenom: 'CONST', coinMinimalDenom: 'uconst', coinDecimals: 6 }], feeCurrencies: [{ coinDenom: 'CONST', coinMinimalDenom: 'uconst', coinDecimals: 6 }], coinType: 118, gasPriceStep: { low: 0, average: 0.1, high: 0.2 }, features: ['cosmwasm'],
   };
 
-  let accounts, CosmWasmClient, queryHandler, gasPrice;
-
   async function connectKeplrWallet() {
     if (window['keplr']) {
       if (window.keplr['experimentalSuggestChain']) {
@@ -69,15 +69,19 @@ const Header = () => {
 
         const offlineSigner = await window.keplr.getOfflineSigner(ChainInfo.chainId);
 
-        gasPrice = GasPrice.fromString('0.002' + ChainInfo.currencies[0].coinMinimalDenom);
+        let gasPrice = GasPrice.fromString('0.002' + ChainInfo.currencies[0].coinMinimalDenom);
+        setgasPrice(gasPrice)
 
-        CosmWasmClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, { gasPrice: gasPrice });
+        let CosmWasmClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, { gasPrice: gasPrice });
+        setCosmWasmClient(CosmWasmClient)
+
+        console.log(SigningArchwayClient)
         // This async waits for the user to authorize your dapp
         // it returns their account address only after permissions
         // to read that address are granted
-        accounts = await offlineSigner.getAccounts();
+        setaccounts(await offlineSigner.getAccounts());
         // A less verbose reference to handle our queries
-        queryHandler = CosmWasmClient.queryClient.wasm.queryContractSmart;
+        setqueryHandler(CosmWasmClient.queryClient.wasm.queryContractSmart);
         console.log('Wallet connected', {
           offlineSigner: offlineSigner,
           CosmWasmClient: CosmWasmClient,
@@ -134,7 +138,7 @@ const Header = () => {
           }}
           onClick={handleArchwayConnect}
         >
-          Connect Wallet
+          {accounts ? 'Disconnect Wallet' : 'Connect Wallet'}
         </Button>
 
         <Button

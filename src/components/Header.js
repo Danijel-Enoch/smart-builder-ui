@@ -20,17 +20,17 @@ const Header = () => {
   const [queryHandler, setqueryHandler] = useState()
   const [gasPrice, setgasPrice] = useState()
 
-  	const [uDauth, setUDauth] = useState()
+  const [uDauth, setUDauth] = useState()
 
-	useEffect(() => {
-		// console.log(location.href)
-		const uDauth = new UAuth({
-			clientID: "343c05d3-777a-44c5-9ce6-2adb97cf6dab",
-			redirectUri: `${location.href}`,
-			scope: "openid wallet email profile:optional social:optional"
-		})
-		setUDauth(uDauth)
-	}, [])
+  useEffect(() => {
+    // console.log(location.href)
+    const uDauth = new UAuth({
+      clientID: "343c05d3-777a-44c5-9ce6-2adb97cf6dab",
+      redirectUri: `${window.location.href}`,
+      scope: "openid wallet email profile:optional social:optional"
+    })
+    setUDauth(uDauth)
+  }, [])
 
   // Handle connector activation and update connection/error state
   const handleToggleConnect = async () => {
@@ -45,21 +45,21 @@ const Header = () => {
       }
   };
 
-  	useEffect(() => {
-		if (uDauth != undefined || udUser != undefined) {
-			try {
-				uDauth.user()
-					.then((user) => {
-						setUdUser(user)
-					})
-					.catch((e) => {
-						console.log(e)
-					})
-			} catch (err) {
-				// console.log(err)
-			}
-		}
-	}, [uDauth])
+  useEffect(() => {
+    if (uDauth != undefined || udUser != undefined) {
+      try {
+        uDauth.user()
+          .then((user) => {
+            setUdUser(user)
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+      } catch (err) {
+        // console.log(err)
+      }
+    }
+  }, [uDauth])
 
 
   if (udUser) isActive = true
@@ -170,7 +170,8 @@ const Header = () => {
       </Box>
       <Box>
         <h3>
-          Status -{' '}
+          Status -
+          {udUser ? udUser.sub : ''}
 
         </h3>
       </Box>

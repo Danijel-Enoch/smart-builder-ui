@@ -23,12 +23,11 @@ const Header = () => {
   const [uDauth, setUDauth] = useState()
 
   useEffect(() => {
-    const url = window.location.href
-    console.log(url)
+    // console.log(location.href)
     const uDauth = new UAuth({
-      clientID: "343c05d3-777a-44c5-9ce6-2adb97cf6dab",
-      redirectUri: `https://smartbuilder.vercel.app`,
-      scope: "openid wallet email profile:optional social:optional"
+      clientID: "d33e635d-7c71-4e48-9376-5756cd2a018b",
+      redirectUri: `${window.location.href}`,
+      scope: "openid wallet email"
     })
     setUDauth(uDauth)
   }, [])

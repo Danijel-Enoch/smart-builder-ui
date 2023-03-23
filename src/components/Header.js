@@ -23,7 +23,7 @@ const Header = () => {
   const [uDauth, setUDauth] = useState()
 
   useEffect(() => {
-    // console.log(location.href)
+    console.log(window.location)
     const uDauth = new UAuth({
       clientID: "d33e635d-7c71-4e48-9376-5756cd2a018b",
       redirectUri: `${window.location.href}`,
@@ -86,26 +86,18 @@ const Header = () => {
         let CosmWasmClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, { gasPrice: gasPrice });
         setCosmWasmClient(CosmWasmClient)
 
-        console.log(SigningArchwayClient)
         // This async waits for the user to authorize your dapp
         // it returns their account address only after permissions
         // to read that address are granted
         setaccounts(await offlineSigner.getAccounts());
         // A less verbose reference to handle our queries
         setqueryHandler(CosmWasmClient.queryClient.wasm.queryContractSmart);
-        console.log('Wallet connected', {
-          offlineSigner: offlineSigner,
-          CosmWasmClient: CosmWasmClient,
-          accounts: accounts,
-          chain: ChainInfo,
-          queryHandler: queryHandler,
-          gasPrice: gasPrice,
-        });
+
       } else {
-        console.warn('Error accessing experimental features, please update Keplr');
+        alert('Error accessing experimental features, please update Keplr');
       }
     } else {
-      console.warn('Error accessing Keplr, please install Keplr');
+      alert('Error accessing Keplr, please install Keplr');
     }
   }
 
@@ -113,7 +105,6 @@ const Header = () => {
     await connectKeplrWallet()
   }
 
-  console.log(accounts)
 
   return (
     <Box

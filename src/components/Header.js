@@ -34,9 +34,10 @@ const Header = () => {
 
   // Handle connector activation and update connection/error state
   const handleToggleConnect = async () => {
-    if (udUser)
+    if (udUser){
       await uDauth.logout()
-    else
+    window.location.reload()
+  }  else
       try {
         const authorization = await uDauth.loginWithPopup()
         window.location.reload()

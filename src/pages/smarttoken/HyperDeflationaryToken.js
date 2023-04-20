@@ -76,7 +76,7 @@ const HyperDeflationaryToken = () => {
           <FormLabel>Token Name</FormLabel>
           <Input
             type="text"
-            placeholder="ex: NEAR"
+            placeholder="ex: Archway"
             onChange={(e) =>
               setFormData({ ...formData, tokenName: e.target.value })
             }
@@ -87,7 +87,7 @@ const HyperDeflationaryToken = () => {
           <FormLabel>Symbol</FormLabel>
           <Input
             type="text"
-            placeholder="ex: NEAR"
+            placeholder="ex: Archway"
             onChange={(e) =>
               setFormData({ ...formData, symbol: e.target.value })
             }

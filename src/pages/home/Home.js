@@ -83,7 +83,7 @@ const Home = () => {
           pb="0.5rem"
           fontWeight="600"
         >
-          Growing the NEAR ecosystem
+          Growing the ARCHWAY ecosystem
         </Text>
 
         <Text
@@ -93,7 +93,7 @@ const Home = () => {
           fontWeight="400"
         >
           Smartbuilder is the toolkit needed to build almost evertthing on the
-          NEAR ecosystem easily.
+          ARCHWAY ecosystem easily.
         </Text>
 
         <Flex

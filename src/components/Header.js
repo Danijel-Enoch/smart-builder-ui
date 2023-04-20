@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Image } from '@chakra-ui/react';
 import logo from '../assets/Smart Builders Logo.png';
 import brandName from '../assets/Smart Builders Logo text.png';
-import nearIcon from '../assets/near-icon.png';
+import archwayIcon from '../assets/archway.png';
 // import connectors from '../utils/connectors'
 
 import { SigningArchwayClient } from '@archwayhq/arch3.js'; import { GasPrice } from '@cosmjs/stargate';
@@ -127,7 +127,7 @@ const Header = () => {
       </Box>
 
       <Box display="flex" alignItems="center">
-        <Image boxSize="40px" src={nearIcon} alt="nearIcon" />
+        <Image width={150} src={archwayIcon} alt="archwayIcon" />
         <Button
           ml="1.5rem"
           p="1.5rem"

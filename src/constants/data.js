@@ -10,7 +10,7 @@ import logo from "../assets/Smart Builders Logo.png";
 const Tokens = [
   {
     id: 1,
-    name: "NEAR",
+    name: "ARCHWAY",
   },
   {
     id: 2,
@@ -99,7 +99,7 @@ const sbEcosystem = [
   {
     id: 1,
     name: "SmartToken",
-    text: "The first Auto token deployer on the NEAR blockchain",
+    text: "The first Auto token deployer on the ARCHWAY blockchain",
     logo: logo,
   },
   {
@@ -123,7 +123,7 @@ const sbEcosystem = [
   {
     id: 5,
     name: "SmartLearn",
-    text: "Best online bootcamp to learn how to build useable product on the NEAR ecosystem",
+    text: "Best online bootcamp to learn how to build useable product on the ARCHWAY ecosystem",
     logo: logo,
   },
 ];

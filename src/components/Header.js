@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import * as nearAPI from 'near-api-js';
-import { Box, Button, Image } from '@chakra-ui/react';
-import logo from '../assets/Smart Builders Logo.png';
-import brandName from '../assets/Smart Builders Logo text.png';
-// import nearIcon from '../assets/near-icon.png';
+import { Box, Button, Image } from "@chakra-ui/react";
+import logo from "../assets/Smart Builders Logo.png";
+import brandName from "../assets/Smart Builders Logo text.png";
+import archwayIcon from "../assets/archway.png";
 // import connectors from '../utils/connectors'
 
-import { SigningArchwayClient } from '@archwayhq/arch3.js';
-import { GasPrice } from '@cosmjs/stargate';
-import UAuth from '@uauth/js';
+import { SigningArchwayClient } from "@archwayhq/arch3.js";
+import { GasPrice } from "@cosmjs/stargate";
+import UAuth from "@uauth/js";
 
 const Header = () => {
   let isActive = false;
@@ -23,9 +23,9 @@ const Header = () => {
   useEffect(() => {
     // console.log(window.location);
     const uDauth = new UAuth({
-      clientID: 'd33e635d-7c71-4e48-9376-5756cd2a018b',
+      clientID: "d33e635d-7c71-4e48-9376-5756cd2a018b",
       redirectUri: `${window.location.href}`,
-      scope: 'openid wallet email',
+      scope: "openid wallet email"
     });
     setUDauth(uDauth);
   }, []);
@@ -67,38 +67,38 @@ const Header = () => {
   // boil fever net pottery hidden shiver small skin harsh chronic method vacant
 
   const ChainInfo = {
-    chainId: 'constantine-1',
-    chainName: 'Constantine Testnet',
-    rpc: 'https://rpc.constantine-1.archway.tech',
-    rest: 'https://api.constantine-1.archway.tech',
+    chainId: "constantine-1",
+    chainName: "Constantine Testnet",
+    rpc: "https://rpc.constantine-1.archway.tech",
+    rest: "https://api.constantine-1.archway.tech",
     stakeCurrency: {
-      coinDenom: 'CONST',
-      coinMinimalDenom: 'uconst',
-      coinDecimals: 6,
+      coinDenom: "CONST",
+      coinMinimalDenom: "uconst",
+      coinDecimals: 6
     },
     bip44: { coinType: 118 },
     bech32Config: {
-      bech32PrefixAccAddr: 'archway',
-      bech32PrefixAccPub: 'archwaypub',
-      bech32PrefixValAddr: 'archwayvaloper',
-      bech32PrefixValPub: 'archwayvaloperpub',
-      bech32PrefixConsAddr: 'archwayvalcons',
-      bech32PrefixConsPub: 'archwayvalconspub',
+      bech32PrefixAccAddr: "archway",
+      bech32PrefixAccPub: "archwaypub",
+      bech32PrefixValAddr: "archwayvaloper",
+      bech32PrefixValPub: "archwayvaloperpub",
+      bech32PrefixConsAddr: "archwayvalcons",
+      bech32PrefixConsPub: "archwayvalconspub"
     },
     currencies: [
-      { coinDenom: 'CONST', coinMinimalDenom: 'uconst', coinDecimals: 6 },
+      { coinDenom: "CONST", coinMinimalDenom: "uconst", coinDecimals: 6 }
     ],
     feeCurrencies: [
-      { coinDenom: 'CONST', coinMinimalDenom: 'uconst', coinDecimals: 6 },
+      { coinDenom: "CONST", coinMinimalDenom: "uconst", coinDecimals: 6 }
     ],
     coinType: 118,
     gasPriceStep: { low: 0, average: 0.1, high: 0.2 },
-    features: ['cosmwasm'],
+    features: ["cosmwasm"]
   };
 
   async function connectKeplrWallet() {
-    if (window['keplr']) {
-      if (window.keplr['experimentalSuggestChain']) {
+    if (window["keplr"]) {
+      if (window.keplr["experimentalSuggestChain"]) {
         await window.keplr.experimentalSuggestChain(ChainInfo);
         await window.keplr.enable(ChainInfo.chainId);
 
@@ -107,7 +107,7 @@ const Header = () => {
         );
 
         let gasPrice = GasPrice.fromString(
-          '0.002' + ChainInfo.currencies[0].coinMinimalDenom
+          "0.002" + ChainInfo.currencies[0].coinMinimalDenom
         );
         setgasPrice(gasPrice);
 
@@ -125,10 +125,10 @@ const Header = () => {
         // A less verbose reference to handle our queries
         setqueryHandler(CosmWasmClient.queryClient.wasm.queryContractSmart);
       } else {
-        alert('Error accessing experimental features, please update Keplr');
+        alert("Error accessing experimental features, please update Keplr");
       }
     } else {
-      alert('Error accessing Keplr, please install Keplr');
+      alert("Error accessing Keplr, please install Keplr");
     }
   }
 
@@ -156,7 +156,7 @@ const Header = () => {
       </Box>
 
       <Box display="flex" alignItems="center">
-        {/* <Image boxSize="40px" src={nearIcon} alt="nearIcon" /> */}
+        <Image width={150} src={archwayIcon} alt="archwayIcon" />
         <Button
           ml="1.5rem"
           p="1.5rem"
@@ -164,13 +164,13 @@ const Header = () => {
           color="white"
           borderRadius="15px"
           _hover={{
-            bg: 'brand.primary',
-            opacity: '0.8',
-            color: 'black',
+            bg: "brand.primary",
+            opacity: "0.8",
+            color: "black"
           }}
           onClick={handleArchwayConnect}
         >
-          {accounts ? 'Disconnect Wallet' : 'Connect Wallet'}
+          {accounts ? "Disconnect Wallet" : "Connect Wallet"}
         </Button>
 
         <Button
@@ -180,17 +180,17 @@ const Header = () => {
           color="white"
           borderRadius="15px"
           _hover={{
-            bg: 'brand.primary',
-            opacity: '0.8',
-            color: 'black',
+            bg: "brand.primary",
+            opacity: "0.8",
+            color: "black"
           }}
           onClick={handleToggleConnect}
         >
-          {isActive ? 'Logout' : 'Login with Unstoppable'}
+          {isActive ? "Logout" : "Login with Unstoppable"}
         </Button>
       </Box>
       <Box>
-        <h3>Status -{udUser ? udUser.sub : ''}</h3>
+        <h3>Status -{udUser ? udUser.sub : ""}</h3>
       </Box>
     </Box>
   );

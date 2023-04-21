@@ -22,11 +22,11 @@ const SmartStaking = () => {
   const networks = [
     {
       id: 1,
-      name: "NEAR Testnet",
+      name: "Archwway Testnet",
     },
     {
       id: 2,
-      name: "NEAR Mainnet",
+      name: "Archway Mainnet",
     },
   ];
 

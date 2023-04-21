@@ -74,7 +74,7 @@ const MintBurnToken = () => {
           <FormLabel>Token Name</FormLabel>
           <Input
             type="text"
-            placeholder="ex: NEAR"
+            placeholder="ex: ArchWay"
             onChange={(e) =>
               setFormData({ ...formData, tokenName: e.target.value })
             }
@@ -85,7 +85,7 @@ const MintBurnToken = () => {
           <FormLabel>Symbol</FormLabel>
           <Input
             type="text"
-            placeholder="ex: NEAR"
+            placeholder="ex: ArchWay"
             onChange={(e) =>
               setFormData({ ...formData, symbol: e.target.value })
             }

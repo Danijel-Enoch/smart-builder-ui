@@ -12,10 +12,13 @@ const Widget = () => {
 
   const response = async () => {
     const flow = await axios
-      .get("https://dorahacks.io/api/hackathon-buidls/69")
+      .get(
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&category=cosmos-ecosystem&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en"
+      )
       .then((e) => {
-        setList(e.data?.results);
-        console.log(e?.data?.results);
+        setList(e.data);
+        // console.log(e);
+        // console.log(e?.data?.response);
       });
   };
   useLayoutEffect(() => {
@@ -51,13 +54,13 @@ const Widget = () => {
       }}
     >
       {list.map((token, i) => (
-        <Link
+        <Box
           className="ticker-item"
           key={token.id}
           ml="1rem"
-          href={`${token?.demo_url}` || "#"}
+          // href={`${token?.demo_url}` || "#"}
           style={{
-            width: "300px",
+            width: "500px",
             overflowX: "hidden",
             display: "flex",
             justifyContent: "space-evenly",
@@ -66,8 +69,8 @@ const Widget = () => {
         >
           <Box>
             <Image
-              style={{ width: ".95em", borderRadius: "50%" }}
-              src={token?.pictures[0]}
+              style={{ width: "2rem", borderRadius: "50%" }}
+              src={token?.image}
               alt={`${token.name} image url`}
             />
           </Box>
@@ -78,11 +81,11 @@ const Widget = () => {
             color="brand.primary"
             ml="0.5rem"
             as="span"
-            style={{ maxWidth: "100px", width: "100px", overflowX: "hidden" }}
+            style={{ maxWidth: "150px", width: "150px", overflowX: "hidden" }}
           >
             {token.name}
           </Text>
-        </Link>
+        </Box>
       ))}
       <Box height={"300px"} />
     </Box>

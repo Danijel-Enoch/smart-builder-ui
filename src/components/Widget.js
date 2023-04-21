@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Text, Image, Link } from "@chakra-ui/react";
-import { Tokens } from "../constants/data";
+// import { Tokens } from "../constants/data";
 import axios from "axios";
 import { useState } from "react";
 import { useLayoutEffect } from "react";

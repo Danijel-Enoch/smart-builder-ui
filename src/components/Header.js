@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, Image } from '@chakra-ui/react';
 import logo from '../assets/Smart Builders Logo.png';
 import brandName from '../assets/Smart Builders Logo text.png';
-import nearIcon from '../assets/near-icon.png';
+// import nearIcon from '../assets/near-icon.png';
 // import connectors from '../utils/connectors'
 
 import { SigningArchwayClient } from '@archwayhq/arch3.js';
@@ -21,7 +21,7 @@ const Header = () => {
   const [uDauth, setUDauth] = useState();
 
   useEffect(() => {
-    console.log(window.location);
+    // console.log(window.location);
     const uDauth = new UAuth({
       clientID: 'd33e635d-7c71-4e48-9376-5756cd2a018b',
       redirectUri: `${window.location.href}`,
@@ -45,7 +45,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (uDauth != undefined || udUser != undefined) {
+    if (uDauth !== undefined || udUser !== undefined) {
       try {
         uDauth
           .user()
@@ -156,7 +156,7 @@ const Header = () => {
       </Box>
 
       <Box display="flex" alignItems="center">
-        <Image boxSize="40px" src={nearIcon} alt="nearIcon" />
+        {/* <Image boxSize="40px" src={nearIcon} alt="nearIcon" /> */}
         <Button
           ml="1.5rem"
           p="1.5rem"

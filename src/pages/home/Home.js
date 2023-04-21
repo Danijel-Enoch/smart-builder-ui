@@ -1,7 +1,8 @@
-import React from 'react';
-import { Box, Text, Button, Image, Flex } from '@chakra-ui/react';
-import { sbEcosystem } from '../../constants/data';
-import arrow from '../../assets/right-arrow.png';
+import React from "react";
+import { Box, Text, Button, Image, Flex } from "@chakra-ui/react";
+import { sbEcosystem } from "../../constants/data";
+import arrow from "../../assets/right-arrow.png";
+import "../card.css";
 
 const Home = () => {
   return (
@@ -32,9 +33,9 @@ const Home = () => {
           mr="3rem"
           borderRadius="15px"
           _hover={{
-            bg: 'brand.primary',
-            opacity: '0.8',
-            color: 'black',
+            bg: "brand.primary",
+            opacity: "0.8",
+            color: "black"
           }}
         >
           Create Now
@@ -43,7 +44,7 @@ const Home = () => {
         <Box display="flex" alignItems="center">
           <Text as="span" mr="0.5rem">
             Learn more
-          </Text>{' '}
+          </Text>{" "}
           <Image boxSize="20px" src={arrow} alt="right-arrow" />
         </Box>
       </Box>
@@ -106,6 +107,7 @@ const Home = () => {
         >
           {sbEcosystem.map((item) => (
             <Box
+              className="card-glass"
               p="0.5rem"
               mx="0.5rem"
               mb="2rem"

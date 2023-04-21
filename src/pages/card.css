@@ -1,0 +1,11 @@
+.card-glass {
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: rgba(132, 90, 90, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.9px);
+  -webkit-backdrop-filter: blur(5.9px);
+  border: 1px solid rgba(132, 90, 90, 0.84);
+  box-shadow: 18px 18px 36px #b8b8b8, -18px -18px 36px #ffffff;
+}

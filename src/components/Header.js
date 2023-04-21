@@ -200,4 +200,3 @@ export default Header;
 
 // passphrase: wreck paper grunt roast lonely join rail tourist double soldier name wise
 // devcreed.testnet;
-Foote;

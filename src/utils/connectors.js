@@ -28,9 +28,11 @@ const uauth = initializeConnector(
       options: {
         // These values can be copied from your dashboard client configuration
         clientID: "fbd161ea-557d-4628-af2f-fc0bb3417300",
-        redirectUri: "https://smartbuilder-134a8.web.app/",
+
+        // redirectUri: 'https://smartbuilder-134a8.web.app/',
+        redirectUri: "http://localhost:3000/",
         // Scope must include openid and wallet
-        scope: "openid wallet",
+        scope: "openid wallet profile:optional social:optional email:optional",
 
         // Injected/metamask and walletconnect connectors are required
         connectors: { injected: metaMask[0], walletconnect: walletConnect[0] }

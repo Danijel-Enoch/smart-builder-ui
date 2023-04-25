@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -8,7 +8,8 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
-
+import { SmartdeployerCoswasm } from "../../sdk/web3/index"
+import { SmartInstantiate } from "../../sdk/web3/instantiate";
 const StandardToken = () => {
   const navigate = useNavigate();
 
@@ -17,8 +18,15 @@ const StandardToken = () => {
     tokenName: "",
     symbol: "",
     decimal: "",
-    totalSupply: "",
+    totalSupply: ""
   });
+  const [wasmFile, setWasmFile] = useState(null)
+  const [wasmByteArray, setWasmByteArray] = useState(null)
+
+  const onFileChange = (e) => {
+    if (!e.target.files) return
+    setWasmFile(e.target.files[0])
+  }
 
   const handleTokenType = (e) => {
     const token = e.target.value;
@@ -34,9 +42,38 @@ const StandardToken = () => {
       navigate("/smarttoken");
     }
   };
+  useEffect(() => {
+    if (wasmFile) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        try {
+          if (!e.target?.result) return
+          const byteArray = new Uint8Array(e.target.result)
+          setWasmByteArray(byteArray)
+        } catch (error) { }
+      }
+      reader.readAsArrayBuffer(wasmFile)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wasmFile])
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      // console.log({ wasmFile })
+      await SmartdeployerCoswasm(wasmByteArray)
+      //await SmartInstantiate()
+    } catch (err) {
+      console.log({ err })
+    }
+
+    // const reader = new FileReader()
+    // reader.onload = (e) => {
+    //   try {
+    //     if (!e.target?.result) return
+    //     const byteArray = new Uint8Array(e.target.result)
+    //   } catch (error) { }
+    // }
     // console.log(formData);
   };
 
@@ -110,6 +147,10 @@ const StandardToken = () => {
               setFormData({ ...formData, totalSupply: e.target.value })
             }
           />
+        </FormControl>
+
+        <FormControl>
+          <Input type="file" onChange={(e) => onFileChange(e)} />
         </FormControl>
 
         <Box my="1.5rem" textAlign="center">

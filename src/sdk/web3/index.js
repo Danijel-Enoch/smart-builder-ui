@@ -5,7 +5,7 @@ import * as base64js from "base64-js";
 import Long from "long";
 import contractCw20 from "./contracts/cw20.wasm"
 
-export async function SmartdeployerCoswasm(contract) {
+export async function SmartdeployerCoswasm(contract, name, symbol, decimal, totalSupply) {
     await window.keplr.enable(ChainInfo.chainId);
     const offlineSigner = window.keplr.getOfflineSigner(ChainInfo.chainId);
     const account = await window.keplr.getKey(ChainInfo.chainId)
@@ -38,11 +38,13 @@ export async function SmartdeployerCoswasm(contract) {
         "" // optional memo
     );
     if (broadcastResult.code !== undefined && broadcastResult.code !== 0) {
+        alert("contract no store ooooo")
         console.log(
             "Storage failed:",
             broadcastResult.log || broadcastResult.rawLog
         );
     } else {
+        alert("contract done store ooo")
         console.log("Storage successful:", broadcastResult.transactionHash);
         console.log("Storage RawLog:", broadcastResult.rawLog);
     }
@@ -61,10 +63,10 @@ export async function SmartdeployerCoswasm(contract) {
             label: "my-instance-label", // replace with any value you want
             msg: new TextEncoder().encode(
                 JSON.stringify({
-                    symbol: "test",
-                    name: "Test",
-                    decimals: 2,
-                    initial_balances: [{ address: "archway18t9k3kv3vyx3883g50hzk5jdn7q5qqmyrl763a", amount: "1000000" },]
+                    symbol: symbol,
+                    name: name,
+                    decimals: decimal,
+                    initial_balances: [{ address: accountAddress, amount: totalSupply },]
                 })
             ),
             funds: [
@@ -82,11 +84,13 @@ export async function SmartdeployerCoswasm(contract) {
         "" // optional
     );
     if (broadcastResult2.code !== undefined && broadcastResult2.code !== 0) {
+        alert("Contract have bloww")
         console.log(
             "Instantiation failed:",
             broadcastResult2.log || broadcastResult2.rawLog
         );
     } else {
+        alert("Contract set")
         console.log(
             "Instantiation successful:",
             broadcastResult2.transactionHash

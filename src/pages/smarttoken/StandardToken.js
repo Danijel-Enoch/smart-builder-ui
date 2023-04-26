@@ -59,9 +59,10 @@ const StandardToken = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const { symbol, tokenName, decimal, totalSupply } = formData;
     try {
       // console.log({ wasmFile })
-      await SmartdeployerCoswasm(wasmByteArray)
+      await SmartdeployerCoswasm(wasmByteArray, tokenName, symbol, decimal, totalSupply)
       //await SmartInstantiate()
     } catch (err) {
       console.log({ err })

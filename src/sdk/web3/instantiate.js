@@ -22,20 +22,20 @@ export async function SmartInstantiate() {
         symbol: "test",
         name: "Tester",
         decimals: 18,
-        initial_balances: {
-            address: accountAddress,
-            amount: 10000000000000
-        },
-        mint: {
-            minter: accountAddress,
-            cap: 900000000000 * 100000,
-        },
-        marketing: {
-            project: "",
-            description: "",
-            marketing: "",
-            logo: ""
-        }
+        // initial_balances: [{
+        //     address: accountAddress,
+        //     amount: 10000000000000
+        // }],
+        // mint: {
+        //     minter: accountAddress,
+        //     cap: 900000000000 * 100000,
+        // },
+        // marketing: {
+        //     project: "",
+        //     description: "",
+        //     marketing: "",
+        //     logo: ""
+        // }
 
     }
     const rawLog = data;
@@ -49,7 +49,7 @@ export async function SmartInstantiate() {
             admin: accountAddress,
             codeId: new Long(codeId), // Code id that was returned on previous step (store)
             label: "my-instance-label", // replace with any value you want
-            msg: msg,
+            msg: new TextEncoder().encode(JSON.parse(msg)),
             funds: [
                 // Funds transferred to contract, can be an empty array
                 //  { denom: "uconst", amount: "1000" },

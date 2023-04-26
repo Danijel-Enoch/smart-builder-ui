@@ -60,38 +60,12 @@ export async function SmartdeployerCoswasm(contract) {
             codeId: new Long(codeId), // Code id that was returned on previous step (store)
             label: "my-instance-label", // replace with any value you want
             msg: new TextEncoder().encode(
-                // has to be encoded in utf8
-                // name: "Auto Gen".to_string(),
-                // symbol: "AUTO".to_string(),
-                // decimals: 3,
-                // initial_balances: vec![Cw20Coin {
-                //     address: addr.to_string(),
-                //     amount,
-                // }],
-                // mint: mint.clone(),
-                // marketing: None,
-
-                {
-                    decimals: 18,
+                JSON.stringify({
                     symbol: "test",
-                    name: "Tester",
-                    initial_balances: {
-                        address: accountAddress,
-                        amount: 100000000,
-                    },
-                    mint: {
-                        minter: "",
-                        cap: "",
-                    },
-                    marketing: {
-                        project: "",
-                        description: "",
-                        marketing: "",
-                        logo: ""
-                    }
-
-                }
-
+                    name: "Test",
+                    decimals: 2,
+                    initial_balances: [{ address: "archway18t9k3kv3vyx3883g50hzk5jdn7q5qqmyrl763a", amount: "1000000" },]
+                })
             ),
             funds: [
                 // Funds transferred to contract, can be an empty array
